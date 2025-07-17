@@ -1,0 +1,30 @@
+# 默认忽略的文件
+/shelf/
+/workspace.xml
+# 基于编辑器的 HTTP 客户端请求
+/httpRequests/
+# 依赖于环境的 Maven 主目录路径
+/mavenHomeManager.xml
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# === Java / Spring Boot 編譯與設定產物 ===
+*.class
+*.jar
+*.war
+*.log
+target/
+build/
+.gradle/
+out/
+
+# === Vue / Vite 前端開發產物 ===
+node_modules/
+dist/
+.vite/
+.env*
+npm-debug.log*
+
+# === 系統垃圾檔案 ===
+.DS_Store
+Thumbs.db
