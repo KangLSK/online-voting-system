@@ -31,7 +31,14 @@ DELIMITER ;
 DELIMITER $$
 CREATE PROCEDURE delete_vote_item(IN itemId INT)
 BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+        BEGIN
+            ROLLBACK;
+        END;
+
+    START TRANSACTION;
     DELETE FROM vote_record WHERE item_id = itemId;
     DELETE FROM vote_item WHERE id = itemId;
+    COMMIT;
 END$$
 DELIMITER ;
