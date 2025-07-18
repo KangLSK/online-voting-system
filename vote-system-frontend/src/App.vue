@@ -1,27 +1,15 @@
 <script setup>
-import VoteForm from './components/VoteForm.vue'
-import VoteItemList from './components/VoteItemList.vue'
-import VoteAdminPanel from './components/VoteAdminPanel.vue'
+
 </script>
 
 <template>
-  <div class="container">
+  <div>
     <h1>線上投票系統</h1>
-
-    <!-- 投票表單 -->
-    <section>
-      <VoteForm />
-    </section>
-
-    <!-- 投票項目列表與票數 -->
-    <section>
-      <VoteItemList />
-    </section>
-
-    <!-- 管理員面板 -->
-    <section>
-      <VoteAdminPanel />
-    </section>
+    <nav>
+      <router-link to="/vote">投票頁面</router-link> |
+      <router-link to="/admin">管理頁面</router-link>
+    </nav>
+    <router-view />
   </div>
 </template>
 
