@@ -21,8 +21,11 @@ const selectedItemIds = ref([])
 const voter = ref('')
 
 onMounted(async () => {
-  items.value = await voteService.getVoteItems()
+  const res = await voteService.getVoteItems()
+  console.log('取得的 items：', res.data)
+  items.value = res
 })
+
 
 const submitVote = async () => {
   if (!voter.value || selectedItemIds.value.length === 0) {
@@ -30,12 +33,21 @@ const submitVote = async () => {
     return
   }
 
-  await voteService.submitVote({
+  const payload = {
     voter: voter.value,
     itemIds: selectedItemIds.value
-  })
+  }
 
-  alert('投票成功！')
-  selectedItemIds.value = []
+  console.log("提交的 payload：", payload)
+
+  try {
+    await voteService.submitVote(payload)
+    alert('投票成功！')
+    selectedItemIds.value = []
+    location.reload()
+  } catch (err) {
+    console.error("投票發生錯誤：", err)
+    alert('投票失敗，請稍後再試')
+  }
 }
 </script>
