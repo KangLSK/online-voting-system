@@ -1,0 +1,24 @@
+### 取得所有投票項目與票數
+GET http://localhost:8080/api/votes/items
+Accept: application/json
+
+###
+
+### 新增投票項目
+POST http://localhost:8080/api/votes/items?name=電腦
+
+###
+
+### 發起投票（可多選）
+POST http://localhost:8080/api/votes/vote
+Content-Type: application/json
+
+{
+  "voter": "Leo",
+  "itemIds": [1, 2]
+}
+
+###
+
+### 刪除投票項目
+DELETE http://localhost:8080/api/votes/items/2
